@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'UserPart',
     'accounts'
 ]
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'GestionPlaintes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["accounts/static/templates", ],
+        'DIRS': ["accounts/static/templates", "UserPart/static/templates", ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
