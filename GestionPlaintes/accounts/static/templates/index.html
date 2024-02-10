@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
 
     <!-- Message toastr -->
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/toastr/toastr.min.css'%}"> -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 
     <!--Icons site-->
@@ -119,16 +120,6 @@
                     <div class="input-box">
                         <input type="submit" class="submit" id="inscription" value="S'inscrire">
                     </div>
-
-                    <!-- <div class="two-col">
-                        <div class="one">
-                            <input type="checkbox" id="register-check">
-                            <label for="register-check"> Souviens-toi de moi</label>
-                        </div>
-                        <div class="two">
-                            <label for="#"><a href="#">Termes et conditions</a></label>
-                        </div>
-                    </div> -->
                 </form>
             </div>
         </div>
@@ -136,8 +127,17 @@
     </div>
 </body>
 <script src="{% static 'js/jquery/jquery.min.js'%}"></script>
-<script src="{% static 'js/toastr/toastr.min.js'%}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
 
 <script src="{% static 'js/script.js'%}"></script>
+{ % if error_message %}
+<script>
+    toastr.error('{{ error_message }}', '', {
+        positionClass: 'toast-top-center'
+    });
+</script>
+{ % endif %}
 
 </html>

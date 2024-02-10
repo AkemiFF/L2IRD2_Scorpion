@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
 class CustomUserManager(BaseUserManager):
@@ -25,7 +24,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
@@ -48,3 +47,10 @@ class CustomUser(AbstractBaseUser):
     def get_short_name(self):
         return self.first_name
 
+    def has_perm(self, perm, obj=None):
+        # La logique de contrôle d'autorisation peut être ajoutée ici
+        return True
+
+    def has_module_perms(self, app_label):
+        # La logique de contrôle des autorisations pour un module particulier peut être ajoutée ici
+        return True

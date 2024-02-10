@@ -1,18 +1,46 @@
 {% load static %}
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do App</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/acceuil.css' %}">
     <link rel="shortcut icon" href="{% static '/favicon.ico' %}" type="image/x-icon">
 </head>
+
 <body>
-     <div class="container">
-         <a href="/dev"> <h1>Welcome</h1></a>
-     </div>
+    <nav>
+        <div class="nav-logo">
+            <p><span>S</span>coo<span class="chat">r</span>pion</p>
+        </div>
+        <ul class="nav__links">
+            <li class="link"><a href="#">Accuiel</a></li>
+            <li class="link"><a href="#">Service</a></li>
+            <li class="link"><a href="#">Contact</a></li>
+        </ul>
+        <button class="btn">Deconnexion</button>
+    </nav>
+
+    <header class="section__container header__container">
+        <div class="header__content">
+            <span class="bg__blur"></span>
+            <span class="bg__blur header__blur"></span>
+            <h4>TEST GESTION P</h4>
+            <h1><span>TEST</span> GEST POINT POITN</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi laborum provident quam soluta rerum?
+                Sint,
+                cupiditate? Impedit odio placeat at est consequatur dolorem aspernatur libero labore id debitis. Sequi,
+                incidunt!
+            </p>
+            <button class="btn">Probleme</button>
+            <button class="btn">Suggestion</button>
+        </div>
+    </header>
 </body>
+
 </html>
