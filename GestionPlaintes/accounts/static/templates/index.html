@@ -1,0 +1,143 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestion - </title>
+    <!--Font icons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
+
+    <!-- Message toastr -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/toastr/toastr.min.css'%}"> -->
+
+
+    <!--Icons site-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static '/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!---------------------------Navigation---------------------------------->
+        <nav class="nav">
+            <div class="nav-logo">
+                <p><span>S</span>coo<span class="chat">r</span>pion</p>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#" class="link active">Accueil</a></li>
+                    <li><a href="#" class="link">Services</a></li>
+                    <li><a href="#" class="link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
+                <button class="btn" id="registerBtn" onclick="register()">S'inscrire</button>
+            </div>
+
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+
+        <!--------------------------------From box----------------------------------->
+        <div class="form-box">
+
+
+            <!----------------------Registration form----------------------------------------->
+            <div class="login-container" id="login">
+                <form id="loginForm" action="#" method="post">
+                    {% csrf_token %}
+                    <div class="top">
+                        <span>Vous n'avez pas de compte ? <a onclick="register()">S'inscrirez-vous</a></span>
+                        <header>Se connecter</header>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" id="email" name="email"
+                            placeholder="Nom d'utilisateur ou email">
+                        <small id="error-name" class="form-text text-danger"></small>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" id="password" name="password"
+                            placeholder="Mot de passe">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" id="connexion" value="Se connecter">
+                    </div>
+
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="login-check">
+                            <label for="login-check"> Souviens-toi de moi</label>
+                        </div>
+                        <div class="two">
+                            <label for="#"><a href="#">Mot de passe oublié</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!----------------------Registration form----------------------------------------->
+            <div class="register-container" id="register">
+                <form id="registerForm" action="#" method="post">
+                    {% csrf_token %}
+                    <div class="top">
+                        <span>Deja inscrit ? <a onclick="login()">Connect-toi maintenant</a></span>
+                        <header>S'inscrire</header>
+                    </div>
+
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" id="name" name="name" placeholder="Nom de famille">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" id="surname" name="surname" placeholder="Prénom(s)">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" id="email-inscrip" name="email-inscrip"
+                            placeholder="Adresse e-mail">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" id="password-inscrip" name="password-inscrip"
+                            placeholder="Mot de passe">
+                        <i class="fa fa-lock"></i>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" class="submit" id="inscription" value="S'inscrire">
+                    </div>
+
+                    <!-- <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="register-check">
+                            <label for="register-check"> Souviens-toi de moi</label>
+                        </div>
+                        <div class="two">
+                            <label for="#"><a href="#">Termes et conditions</a></label>
+                        </div>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="{% static 'js/jquery/jquery.min.js'%}"></script>
+<script src="{% static 'js/toastr/toastr.min.js'%}"></script>
+
+<script src="{% static 'js/script.js'%}"></script>
+
+</html>
