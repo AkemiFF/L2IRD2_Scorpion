@@ -11,3 +11,11 @@ def probleme(request):
 
 def suggestion(request):
     return render(request, 'suggestion.html')
+
+
+def service(request):
+    return render(request, 'service.html')
+
+
+def contact(request):
+    return render(request, 'contact.html')
