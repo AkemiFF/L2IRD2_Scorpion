@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+
+<head>
+    {% include 'head.html' %}
+</head>
+<style>
+    .form-container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    h2 {
+        color: #007bff;
+        text-transform: uppercase;
+        font-size: 28px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 12px;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <!---------------------------Navigation---------------------------------->
+        {% include 'nav.html' %}
+
+        <div class="form-container">
+            <h2>Formulaire de Plainte</h2>
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="name">Nom:</label><br>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+
+                <label for="subject">Sujet de la plainte:</label><br>
+                <select id="subject" name="subject">
+                    <option value="service">Problème de service</option>
+                    <option value="facturation">Administration (taxation, perception, comptabilite...)</option>
+                    <option value="livraison">Sécurité publique (incendie, sécurité civile)</option>
+                    <option value="autre">Voirie et transport (déneigement, entretien des rues et routes)</option>
+                    <option value="autre">Traitement des eaux usées</option>
+                    <option value="autre">Cueillette des déchets et recyclage</option>
+                    <option value="autre">Urbanisme</option>
+                    <option value="autre">Loisirs et culture</option>
+                    <option value="autre">Autre : mentionnez :</option>
+
+                </select><br>
+
+                <label for="message">Description de la plainte:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+
+                <label for="photo">Télécharger une photo:</label><br>
+                <input type="file" id="photo" name="photo"><br>
+
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+
+    </div>
+</body>
+<script src="{% static 'js/jquery/jquery.min.js'%}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+<script src="{% static 'js/script.js'%}"></script>
+
+</html>

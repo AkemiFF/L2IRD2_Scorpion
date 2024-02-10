@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!---------------------------Navigation---------------------------------->
+        {% include 'nav.html' %}
+
+        <header class="section__container header__container">
+            <div class="header__content">
+                <span class="bg__blur"></span>
+                <span class="bg__blur header__blur"></span>
+                <h4>TEST GESTION P</h4>
+                <h1><span>TEST</span> GEST POINT POITN</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi laborum provident quam soluta
+                    rerum?
+                    Sint,
+                    cupiditate? Impedit odio placeat at est consequatur dolorem aspernatur libero labore id debitis.
+                    Sequi,
+                    incidunt!
+                </p>
+
+                <div class="nav-button">
+                    <button class="btn white-btn"><a href="{% url 'probleme' %}">Probleme</a></button>
+                    <button class="btn white-btn"><a href="{% url 'suggestion' %}">Suggestion</a></button>
+
+                </div>
+                <div class="nav-button">
+                </div>
+
+            </div>
+        </header>
+    </div>
+</body>
+
+</html>
