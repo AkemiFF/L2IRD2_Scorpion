@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model, authenticate, logout
+from django.contrib.auth import get_user_model, authenticate, logout, login
+
+from .models import StatusUser
+
 """
 from .models import StatusUser
 """
@@ -15,7 +18,7 @@ def index(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, 'index.html')
+    return redirect("page_1")
 
 
 def condition_acceuil(request):
@@ -23,14 +26,19 @@ def condition_acceuil(request):
         if 'email' in request.POST and 'password' in request.POST:
             email = request.POST['email']
             password = request.POST['password']
-
             user = authenticate(request, email=email, password=password)
             if user is not None:
+                try:
+                    status_user = StatusUser.objects.get(user=user)
+                    status_user.status = True
+                    status_user.save()
+                except StatusUser.DoesNotExist:
+                    StatusUser.objects.create(user=user, status=True)
+                login(request, user)
                 return redirect('acceuil/')
             else:
                 error_message = "Adresse e-mail ou mot de passe incorrect."
                 return render(request, 'index.html', {'error_message': error_message})
-
         elif 'email-inscrip' in request.POST and 'password-inscrip' in request.POST:
             email = request.POST['email-inscrip']
             password = request.POST['password-inscrip']
