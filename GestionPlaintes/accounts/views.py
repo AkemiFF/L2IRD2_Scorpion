@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, authenticate, logout, login
-
 from .models import StatusUser
 
 """

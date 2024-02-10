@@ -8,13 +8,9 @@ def index(request):
 
 
 def probleme(request):
-    if request.POST:
-        nom = request.POST['nom']
-        email = request.POST['email']
-        subject = request.POST['subject']
-        message = request.POST['message']
-
-        return render(request, 'probleme.html')
+    if request.method == 'POST':
+        problem = Problem.create_from_request(request)
+        return render(request, 'probleme.html', {'problem': problem})
     return render(request, 'probleme.html')
 
 
