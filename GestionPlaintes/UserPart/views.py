@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Problem
 
 
 def index(request):
-    return render(request, 'acceuil.html')
+    if request.user.is_authenticated:
+        return render(request, 'acceuil.html')
+    else:
+        return redirect("page_1")
 
 
 def probleme(request):

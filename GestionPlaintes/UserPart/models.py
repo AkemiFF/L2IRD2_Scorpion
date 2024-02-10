@@ -14,7 +14,7 @@ class Problem(models.Model):
 
     @classmethod
     def create_from_request(cls, request):
-        nom = request.POST['nom']
+        nom = request.POST['name']
         email = request.POST['email']
         sujet = request.POST['subject']
         description = request.POST['message']
