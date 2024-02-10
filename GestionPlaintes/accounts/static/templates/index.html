@@ -55,6 +55,7 @@
             <!----------------------Registration form----------------------------------------->
             <div class="login-container" id="login">
                 <form id="loginForm" action="#" method="post">
+                    {% csrf_token %}
                     <div class="top">
                         <span>Vous n'avez pas de compte ? <a onclick="register()">S'inscrirez-vous</a></span>
                         <header>Se connecter</header>
@@ -89,6 +90,7 @@
             <!----------------------Registration form----------------------------------------->
             <div class="register-container" id="register">
                 <form id="registerForm" action="#" method="post">
+                    {% csrf_token %}
                     <div class="top">
                         <span>Deja inscrit ? <a onclick="login()">Connect-toi maintenant</a></span>
                         <header>S'inscrire</header>
