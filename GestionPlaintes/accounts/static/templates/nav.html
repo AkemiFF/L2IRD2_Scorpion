@@ -12,11 +12,16 @@
                 </ul>
             </div>
 
+            {% if user.is_authenticated %}
+            <div class="nav-button">
+                <button class="btn" id="deconnexion" onclick="register()">Deconnexion</button>
+            </div>
+            {% else %}
             <div class="nav-button">
                 <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
                 <button class="btn" id="registerBtn" onclick="register()">S'inscrire</button>
             </div>
-
+            {% endif %}
             <div class="nav-menu-btn">
                 <i class="bx bx-menu" onclick="myMenuFunction()"></i>
             </div>
