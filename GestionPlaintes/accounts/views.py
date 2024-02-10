@@ -3,6 +3,14 @@ from django.contrib.auth import get_user_model, authenticate
 
 
 def index(request):
+    if request.user.is_authenticated:
+        return redirect('acceuil/')
+    else:
+        x = condition_acceuil(request)
+        return x
+
+
+def condition_acceuil(request):
     if request.method == 'POST':
         if 'email' in request.POST and 'password' in request.POST:
             email = request.POST['email']
