@@ -3,42 +3,14 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>To-Do App</title>
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/acceuil.css' %}"> -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
-    <link rel="shortcut icon" href="{% static '/favicon.ico' %}" type="image/x-icon">
+    {% include 'head.html' %}
 </head>
 
 <body>
 
     <div class="wrapper">
         <!---------------------------Navigation---------------------------------->
-        <nav class="nav">
-            <div class="nav-logo">
-                <p><span>S</span>coo<span class="chat">r</span>pion</p>
-            </div>
-
-            <div class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="#" class="link active">Accueil</a></li>
-                    <li><a href="#" class="link">Services</a></li>
-                    <li><a href="#" class="link">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-button">
-                <button class="btn white-btn" id="loginBtn" onclick="login()">Deconnexion</button>
-            </div>
-
-            <div class="nav-menu-btn">
-                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
-            </div>
-        </nav>
+        {% include 'nav.html' %}
 
         <header class="section__container header__container">
             <div class="header__content">
