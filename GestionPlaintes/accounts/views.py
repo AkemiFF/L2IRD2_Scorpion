@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model, authenticate, logout
+"""
+from .models import StatusUser
+"""
 
 
 def index(request):
@@ -8,6 +11,11 @@ def index(request):
     else:
         x = condition_acceuil(request)
         return x
+
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'index.html')
 
 
 def condition_acceuil(request):
@@ -37,6 +45,6 @@ def condition_acceuil(request):
             except User.DoesNotExist:
                 user = User.objects.create_user(email=email, password=password, first_name=first_name,
                                                 last_name=last_name)
-                return render(request, 'acceuil.html')
+                return render(request, 'index.html')
 
     return render(request, 'index.html')

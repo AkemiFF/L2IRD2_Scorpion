@@ -1,5 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, User
+
+"""
+class StatusUser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.email} - {self.status}"
+"""
 
 
 class CustomUserManager(BaseUserManager):
