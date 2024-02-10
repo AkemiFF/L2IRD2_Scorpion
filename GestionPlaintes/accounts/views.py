@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, authenticate
-from django.db import IntegrityError
 
 
 def index(request):
@@ -25,7 +24,8 @@ def index(request):
             User = get_user_model()
             try:
                 existing_user = User.objects.get(email=email)
-                return render(request, 'existing_user_error.html')
+                error_message = "L'utilisateur existe déjà."
+                return render(request, 'index.html', {'error_message': error_message})
             except User.DoesNotExist:
                 user = User.objects.create_user(email=email, password=password, first_name=first_name,
                                                 last_name=last_name)
