@@ -7,3 +7,7 @@ def index(request):
 
 def probleme(request):
     return render(request, 'probleme.html')
+
+
+def suggestion(request):
+    return render(request, 'suggestion.html')
