@@ -12,13 +12,15 @@ def index(request):
 
 def probleme(request):
     subjects = Subject.objects.all()
-    context = {"subjects": subjects}
+    added = False
+    context = {"subjects": subjects, 'title': "Scorpion", "added": added}
     if request.method == 'POST':
         problem = Problem.create_from_request(request)
-
+        if problem:
+            added = True
+        context["added"] = added
         return render(request, 'probleme.html', context)
 
-    context['problem'] = Problem()
     return render(request, 'probleme.html', context)
 
 
