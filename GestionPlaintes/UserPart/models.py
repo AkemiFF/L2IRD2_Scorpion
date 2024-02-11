@@ -47,7 +47,7 @@ class Problem(models.Model):
     etat = models.CharField(max_length=200, default="En attente", blank=False, null=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField()
-    image = models.ImageField(upload_to='problem_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='img/', blank=True, null=True)
     importance = models.IntegerField(default=1)
 
     def __str__(self):
