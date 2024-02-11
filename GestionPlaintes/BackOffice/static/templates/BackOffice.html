@@ -30,8 +30,8 @@
                         <td>{{ problem.subject }}</td>
                         <td>{{ problem.etat }}</td>
                         <td class="btn-click">
-                            <button>Envoyer Feedback</button>
-                            <button onclick="openModal('close-ticket-confirmation-modal')">Cloturer</button>
+                            <button><a href="{% url 'feedback' problem.id %}">Envoyer Feedback</a></button>
+                            <button><a href="{% url 'cloturer' problem.id %}">Cloturer</a></button>
                         </td>
                     </tr>
                     {% endfor %}
