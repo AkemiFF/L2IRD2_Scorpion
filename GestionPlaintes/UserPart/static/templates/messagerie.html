@@ -3,17 +3,70 @@
 <html lang="en">
 
 <head>
-    {% include 'head.html' %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+    {% include "head.html" %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/backoffice.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
 
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .message p {
+            margin: 0;
+        }
+
+        .message span {
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
 </head>
 
 <body>
     <div class="wrapper">
-        <!---------------------------Navigation---------------------------------->
         {% include 'nav.html' %}
-        
 
+        <div class="container">
+            <h1>Ma Messagerie</h1>
+            <div class="message">
+                <p>Une phrase</p>
+                <span>reçu le 10/10/24 à 18h30</span>
+            </div>
+            <div class="message">
+                <p>Une phrase</p>
+                <span>reçu le 10/10/24 à 18h30</span>
+            </div>
+            <div class="message">
+                <p>Une phrase</p>
+                <span>reçu le 10/10/24 à 18h30</span>
+            </div>
+            <div class="message">
+                <p>Une phrase</p>
+                <span>reçu le 10/10/24 à 18h30</span>
+            </div>
+            <div class="message">
+                <p>Une phrase</p>
+                <span>reçu le 10/10/24 à 18h30</span>
+            </div>
+        </div>
     </div>
 </body>
 
