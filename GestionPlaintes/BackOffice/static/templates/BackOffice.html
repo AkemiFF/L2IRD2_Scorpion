@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +6,8 @@
     {% include 'head.html' %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/backoffice.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
+
 </head>
 <style>
     body {
@@ -15,6 +16,14 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
+    }
+
+    td {
+        color: #ccc;
+    }
+
+    h2 {
+        color: #ccc;
     }
 </style>
 
@@ -45,12 +54,13 @@
                                 {% endif %}
                             </form>
                             <form action="{% url 'cloturer' problem.id %}" method="post">
-                            {% if problem.etat == "En cours" %}
+                                {% if problem.etat == "En cours" %}
                                 {% csrf_token %}
                                 <button type="submit">Cloturer</button>
-                            {% else %}
-                                <button type="submit" disabled >Cloturer</button>
-                            {% endif %}
+                                {% else %}
+                                <button type="submit" disabled>Cloturer</button>
+                                {% endif %}
+                               <i class="fa fa-trash" aria-hidden="true"></i>
                             </form>
                         </td>
                     </tr>
@@ -60,6 +70,7 @@
 
             <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
             <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
+
 
             <div class="eisenhower-matrix">
                 <div class="quadrant urgent-important">
@@ -86,17 +97,16 @@
                     <table id="ticket-table-important-not-urgent">
                         <tbody>
                             {% for problem in problems %}
-                            {% if  4 < problem.importance and problem.importance <= 6 %}
-                            <tr>
+                            {% if 4 < problem.importance and problem.importance <= 6 %} <tr>
                                 <td>{{ problem.id }}</td>
                                 <td>{{ problem.subject }}</td>
                                 <td>{{ problem.etat }}</td>
                                 <td class="btn-click">
                                     <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                 </td>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -105,17 +115,16 @@
                     <table id="ticket-table-urgent-not-important">
                         <tbody>
                             {% for problem in problems %}
-                            {% if  2 < problem.importance and problem.importance <= 4 %}
-                            <tr>
+                            {% if 2 < problem.importance and problem.importance <= 4 %} <tr>
                                 <td>{{ problem.id }}</td>
                                 <td>{{ problem.subject }}</td>
                                 <td>{{ problem.etat }}</td>
                                 <td class="btn-click">
                                     <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                 </td>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -124,17 +133,16 @@
                     <table id="ticket-table-not-urgent-not-important">
                         <tbody>
                             {% for problem in problems %}
-                            {% if problem.importance <= 2 %}
-                            <tr>
+                            {% if problem.importance <= 2 %} <tr>
                                 <td>{{ problem.id }}</td>
                                 <td>{{ problem.subject }}</td>
                                 <td>{{ problem.etat }}</td>
                                 <td class="btn-click">
                                     <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                 </td>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
                         </tbody>
                     </table>
                 </div>
