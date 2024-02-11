@@ -1,14 +1,316 @@
-{% load static %}
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     {% include 'head.html' %}
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container {
+        border: 1px solid #fff;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .feedback-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .feedback-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .feedback-form input[type="text"],
+    .feedback-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .feedback-form input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .feedback-form input[type="submit"]:hover {
+        background-color: #555;
+    }
+
+    .eisenhower-matrix {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .eisenhower-matrix h2 {
+        text-align: center;
+    }
+
+    .quadrant {
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .urgent-important {
+        background-color: #FF5733;
+    }
+
+    .important-not-urgent {
+        background-color: #FFC300;
+    }
+
+    .urgent-not-important {
+        background-color: #4CAF50;
+    }
+
+    .not-urgent-not-important {
+        background-color: #3498DB;
+    }
+
+    .quadrant h2 {
+        margin-top: 0;
+        color: #fff;
+    }
+
+    .tasks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .tasks li {
+        margin-bottom: 10px;
+    }
+
+    .tasks li span {
+        font-weight: bold;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 20%;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        position: relative;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn-click button {
+        width: 164px;
+        height: 40px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.4);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: .3s ease;
+    }
+</style>
 
 <body>
     <div class="wrapper">
+        <!---------------------------Navigation---------------------------------->
         {% include 'nav.html' %}
+
+        <div class="container">
+            <h2>Liste des Problemes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Numéro de Ticket</th>
+                        <th>Priorité</th>
+                        <th>État</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TCKT001</td>
+                        <td>Urgent et Important</td>
+                        <td>En cours</td>
+                        <td class="btn-click">
+                            <button onclick="openModal('assign-priority-modal')">Assigner Priorité</button>
+                            <button onclick="openModal('send-feedback-modal')">Envoyer Feedback</button>
+                            <button onclick="openModal('request-info-modal')">Demande d'Information</button>
+                            <button onclick="openModal('close-ticket-confirmation-modal')">Cloturer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="eisenhower-matrix">
+                <div class="quadrant urgent-important">
+                    <h2>Urgent et Important</h2>
+                    <ul class="tasks">
+                        <li><span>Tâche 1:</span> Description de la tâche</li>
+                        <li><span>Tâche 2:</span> Description de la tâche</li>
+                    </ul>
+                </div>
+                <div class="quadrant important-not-urgent">
+                    <h2>Important mais Pas Urgent</h2>
+                    <ul class="tasks">
+                        <li><span>Tâche 3:</span> Description de la tâche</li>
+                        <li><span>Tâche 4:</span> Description de la tâche</li>
+                    </ul>
+                </div>
+                <div class="quadrant urgent-not-important">
+                    <h2>Urgent mais Pas Important</h2>
+                    <ul class="tasks">
+                        <li><span>Tâche 5:</span> Description de la tâche</li>
+                    </ul>
+                </div>
+                <div class="quadrant not-urgent-not-important">
+                    <h2>Pas Urgent et Pas Important</h2>
+                    <ul class="tasks">
+                        <li><span>Tâche 6:</span> Description de la tâche</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modale pour Assigner Priorité -->
+        <div id="assign-priority-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('assign-priority-modal')">&times;</span>
+                <h2>Assigner Priorité</h2>
+                <form id="priority-form">
+                    <label for="priority-select">Priorité :</label>
+                    <select id="priority-select" name="priority">
+                        <option value="urgent-important">Urgent et Important</option>
+                        <option value="important-not-urgent">Important mais Pas Urgent</option>
+                        <option value="urgent-not-important">Urgent mais Pas Important</option>
+                        <option value="not-urgent-not-important">Pas Urgent et Pas Important</option>
+                    </select><br>
+                    <input type="submit" value="Enregistrer">
+                </form>
+            </div>
+        </div>
+
+        <!-- Modale pour Envoyer Feedback -->
+        <div id="send-feedback-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('send-feedback-modal')">&times;</span>
+                <h2>Envoyer Feedback</h2>
+                <form id="feedback-form">
+                    <label for="feedback-textarea">Feedback :</label>
+                    <textarea id="feedback-textarea" name="feedback" rows="4" style="width: 233px; height: 126px;"
+                        required></textarea><br>
+                    <label for="resolution-date-input">Date Probable de Résolution :</label>
+                    <input type="text" id="resolution-date-input" name="resolution-date" required><br>
+                    <input type="submit" value="Envoyer">
+                </form>
+            </div>
+        </div>
+
+        <!-- Modale pour Demande d'Information -->
+        <div id="request-info-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('request-info-modal')">&times;</span>
+                <h2>Demande d'Information</h2>
+                <form id="info-request-form">
+                    <label for="info-textarea">Demande d'Information :</label>
+                    <textarea id="info-textarea" name="info-request" rows="4" required></textarea><br>
+                    <input type="submit" value="Envoyer">
+                </form>
+            </div>
+        </div>
+
+        <!-- Modale pour Clôturer -->
+        <div id="close-ticket-confirmation-modal" class="modal">
+            <div class="modal-content">
+                <h2>Clôturer le Ticket</h2>
+                <p>Êtes-vous sûr de vouloir clôturer ce ticket ? Cette action est irréversible.</p>
+                <button onclick="confirmCloseTicket()">Confirmer</button>
+                <button onclick="closeModal('close-ticket-confirmation-modal')">Annuler</button>
+            </div>
+        </div>
+
     </div>
 </body>
+
+<script>
+    function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    function confirmCloseTicket() {
+        closeModal('close-ticket-confirmation-modal');
+    }
+</script>
+
 </html>

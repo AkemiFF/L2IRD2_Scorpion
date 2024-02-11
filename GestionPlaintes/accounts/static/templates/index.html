@@ -6,6 +6,17 @@
     {% include 'head.html' %}
 </head>
 
+<style>
+    body {
+        background: url("{% static 'img/index.png'%}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+    }
+</style>
+
+
 <body>
     <div class="wrapper">
 
@@ -95,14 +106,12 @@
 
 
 <script src="{% static 'js/script.js'%}"></script>
-<!--
-{ % if error_message != "" %}
+{ % if error_message %}
 <script>
     toastr.error('{{ error_message }}', '', {
         positionClass: 'toast-top-center'
     });
 </script>
 { % endif %}
--->
 
 </html>
