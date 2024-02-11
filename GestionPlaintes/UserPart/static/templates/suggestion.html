@@ -48,14 +48,21 @@
     }
 
     textarea {
+        border: 1px solid #fff;
+        color: #FFF;
+        background: transparent;
+        text-align: center;
+        justify-content: justify;
+        align-items: justify;
+        font-family: 'Times New Roman', Times, serif;
         grid-column: span 4;
+        font-size: 20px;
         margin-top: 20px;
         padding: 10px;
         border-radius: 10px;
-        border: none;
-        resize: none;
     }
-    button:hover{
+
+    button:hover {
         background-color: orange;
         cursor: pointer;
     }
@@ -67,7 +74,8 @@
         <div class="container">
             <div class="btn-container">
                 {% for suggestion in suggestions %}
-                    <button id="prev-btn" class="suggestion-button" data-suggestion-text="{{ suggestion.text }}">{{ suggestion.subject }}</button>
+                <button id="prev-btn" class="suggestion-button"
+                    data-suggestion-text="{{ suggestion.text }}">{{suggestion.subject }}</button>
                 {% endfor %}
             </div>
             <textarea name="textfield" id="description" cols="50" rows="15"></textarea>
@@ -77,4 +85,5 @@
         <script src="{% static 'js/script.js'%}"></script>
     </div>
 </body>
+
 </html>
