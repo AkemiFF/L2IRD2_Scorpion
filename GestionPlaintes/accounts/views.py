@@ -28,7 +28,7 @@ def condition_acceuil(request):
             else:
                 print("fdssdfqsd", email, password)
                 error_message = "Adresse e-mail ou mot de passe incorrect."
-                return render(request, 'index.html', {'error_message': error_message})
+                return render(request, 'index.html', {'title': "Scorption", 'error_message': error_message})
         elif 'email-inscrip' in request.POST and 'password-inscrip' in request.POST:
                 email = request.POST['email-inscrip']
                 password = request.POST['password-inscrip']
@@ -39,11 +39,11 @@ def condition_acceuil(request):
                 try:
                     existing_user = User.objects.get(email=email)
                     error_message = "L'utilisateur existe déjà."
-                    return render(request, 'index.html', {'error_message': error_message})
+                    return render(request, 'index.html', {'title': "Scorption", 'error_message': error_message})
                 except User.DoesNotExist:
                     with transaction.atomic():
                         user = User.objects.create_user(email=email, password=password, first_name=first_name,
                                                         last_name=last_name)
                         return redirect('index')
 
-    return render(request, 'index.html', {'error_message': ""})
+    return render(request, 'index.html', {'error_message': "", 'title': "Scorption"})
