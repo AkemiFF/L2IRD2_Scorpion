@@ -14,7 +14,9 @@
     {% endif %}
     {% if user.is_authenticated %}
     <div class="nav-button">
-        <button class="btn" id="deconnexion" onclick="register()"><a href="{% url 'logout' %}">Deconnexion</a></button>
+        <a href="{% url 'logout' %}">
+            <button class="btn" id="deconnexion" onclick="register()">Deconnexion</button>
+        </a>
     </div>
     {% else %}
     <div class="nav-button">

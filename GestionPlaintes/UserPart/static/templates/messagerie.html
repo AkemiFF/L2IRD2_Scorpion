@@ -45,12 +45,18 @@
         {{ message.content}}
         <div class="container">
             <h1>Ma Messagerie</h1>
+            {% if messages %}
             {% for message in messages %}
             <div class="message">
                 <p>{{ message.content }}</p>
-                <span>reçu le 10/10/24 à 18h30</span>
+                <span>reçu le {{ message.sent_at }}</span>
             </div>
             {% endfor %}
+            {% else %}
+            <div class="message">
+                <p>Vous n'avez aucun message.</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </body>
