@@ -38,8 +38,6 @@ def feedback(request, problem_id):
         return render(request, 'index.html', {'problem': problem})
 
 
-
-
 def cloturer(request, problem_id):
     problems = Problem.objects.all()
     context = {"title": "Responsable", "problems": problems}

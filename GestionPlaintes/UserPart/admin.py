@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subject, Problem, Keyword
+from .models import Subject, Problem, Keyword, Suggestion
 
 
 class ProblemAdmin(admin.ModelAdmin):
@@ -15,5 +15,6 @@ class KeywordAdmin(admin.ModelAdmin):
     list_display = ('name', 'subject')
 
 
+admin.site.register(Suggestion)
 admin.site.register(Keyword, KeywordAdmin)
 admin.site.register(Problem, ProblemAdmin)
