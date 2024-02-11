@@ -24,3 +24,6 @@ def cloturer(request, problem_id):
     problem = Problem.objects.get(id=problem_id)
     problem.changer_etat_termine()
     return render(request, "BackOffice.html", context)
+
+
+
