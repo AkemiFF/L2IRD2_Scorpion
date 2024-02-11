@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'UserPart',
-    'accounts'
+    'accounts',
+    'BackOffice'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'GestionPlaintes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["accounts/static/templates", "UserPart/static/templates", ],
+        'DIRS': ["BackOffice/static/templates","accounts/static/templates", "UserPart/static/templates", ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
