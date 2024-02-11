@@ -17,16 +17,47 @@
     }
 
     .container {
-        max-width: 800px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1800px;
         margin: 50px auto;
         padding: 20px;
         background-color: transparent;
-        margin-bottom: 20px;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(255, 255, 255, 21.8);
     }
-    label,p{
-         color: #ccc;
+
+    label,
+    p {
+        color: #ccc;
+    }
+
+    .btn-container {
+        grid-column: span 4;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .btn-container button {
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 10px;
+        flex-basis: calc(25% - 10px);
+    }
+
+    textarea {
+        grid-column: span 4;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        resize: none;
+    }
+    button:hover{
+        background-color: orange;
+        cursor: pointer;
     }
 </style>
 
@@ -34,35 +65,21 @@
     <div class="wrapper">
         {% include 'nav.html' %}
         <div class="container">
-            <h1>Suggérer une solution</h1>
-            <p>
-                Vous rencontrez un problème ?
-                Dites-nous en plus et nous vous proposerons une solution.
-            </p>
-            <form action="#" method="post">
-                <label for="probleme">Type de problème:</label>
-                <select id="subject" name="subject">
-                    {% for suggestion in suggestions %}
-                        <option value="{{ suggestion.id }}">{{ suggestion.subject }}</option>
-                    {% endfor %}
-                </select><br>
-                <div id="conseils"></div>
-            </form>
+            <div class="btn-container">
+                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
+                <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
+                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
+                <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
+                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
+                <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
+                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
+            </div>
+            <textarea name="text" id="" cols="50" rows="15"></textarea>
         </div>
         <script src="{% static 'js/script.js'%}"></script>
         <script src="{% static 'js/suggestion.js'%}"></script>
-        <script>
-            document.getElementById("subject").addEventListener("change", function() {
-                var selectedOption = this.value;
-                var suggestions = JSON.parse('{{ suggestions_json|escapejs }}');
-                var selectedSuggestion = suggestions.find(suggestion => suggestion.id === selectedOption);
-                if (selectedSuggestion) {
-                    document.getElementById("conseils").innerText = selectedSuggestion.text;
-                } else {
-                    document.getElementById("conseils").innerText = "";
-                }
-            });
-        </script>
+
     </div>
 </body>
+
 </html>
