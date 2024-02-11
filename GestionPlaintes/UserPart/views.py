@@ -30,7 +30,7 @@ def probleme(request):
 def suggestion(request):
     subjects = Subject.objects.all()
     context = {"subjects": subjects, 'title': "Scorpion"}
-    return render(request, 'suggestion.html',context)
+    return render(request, 'suggestion.html', context)
 
 
 def messagerie(request):

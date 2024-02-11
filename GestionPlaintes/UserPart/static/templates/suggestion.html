@@ -17,11 +17,11 @@
                 Vous rencontrez un problème de circulation ou d'électricité ?
                 Dites-nous en plus et nous vous proposerons une solution.
             </p>
-            <form action="#">
+            <form action="#" method="post">
                 <label for="probleme">Type de problème:</label>
                 <select id="subject" name="subject">
                     {% for subject in subjects %}
-                    <option value="{{ subject.id }}">{{ subject.name }}</option>
+                        <option value="{{ subject.id }}">{{ subject.name }}</option>
                     {% endfor %}
                 </select>
                 <br>
