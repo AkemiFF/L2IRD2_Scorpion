@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
@@ -41,11 +42,55 @@ def create_default_subjects(sender, **kwargs):
             subject = Subject.objects.create(name=subject_data["name"])
             for keyword_name in subject_data["keywords"]:
                 Keyword.objects.create(name=keyword_name, subject=subject)
+        create_suggestions()
+
+
+def create_suggestions():
+    taxation_subject = Subject.objects.get(name="Administration")
+    securite_subject = Subject.objects.get(name="Sécurité publique")
+    voirie_subject = Subject.objects.get(name="Voirie et transport")
+    eaux_usees_subject = Subject.objects.get(name="Traitement des eaux usées")
+    dechets_recyclage_subject = Subject.objects.get(name="Cueillette des déchets et recyclage")
+    urbanisme_subject = Subject.objects.get(name="Urbanisme")
+    loisirs_culture_subject = Subject.objects.get(name="Loisirs et culture")
+
+    # Créer les instances de Suggestion avec les textes correspondants et le sujet associé
+    Suggestion.objects.create(text="- Mise en place de systèmes de taxation plus transparents et simplifiés pour les citoyens et les entreprises.\n"
+                                    "- Utilisation de technologies numériques pour faciliter la perception des impôts et la comptabilité.\n"
+                                    "- Formation du personnel administratif pour une meilleure gestion des finances publiques.",
+                              subject=taxation_subject)
+    Suggestion.objects.create(text="- Renforcement des services d'incendie en investissant dans de nouveaux équipements et en augmentant les effectifs.\n"
+                                    "- Mise en place de programmes de sensibilisation à la sécurité civile et de formation aux premiers secours pour les résidents.\n"
+                                    "- Amélioration de la coordination entre les services d'urgence pour une réponse plus efficace aux situations de crise.",
+                              subject=securite_subject)
+    Suggestion.objects.create(text="- Planification efficace du déneigement en hiver en utilisant des prévisions météorologiques avancées.\n"
+                                    "- Investissement dans la réparation et l'entretien régulier des routes pour éviter les dommages causés par les intempéries.\n"
+                                    "- Promotion des modes de transport alternatifs tels que le covoiturage, le vélo et les transports en commun pour réduire la pression sur les routes.\n",
+                              subject=voirie_subject)
+    Suggestion.objects.create(text="- Modernisation des installations de traitement des eaux usées pour garantir une meilleure qualité de l'eau.\n"
+                                    "- Sensibilisation à l'importance de réduire la pollution de l'eau et de préserver les ressources hydriques.\n"
+                                    "- Développement de technologies de traitement des eaux plus durables et économiques.\n",
+                              subject=eaux_usees_subject)
+    Suggestion.objects.create(text=" - Mise en place de programmes de sensibilisation à la réduction des déchets et au recyclage.\n"
+                                    "- Expansion des infrastructures de collecte sélective pour encourager le tri des déchets à la source.\n"
+                                    "- Collaboration avec des entreprises locales pour développer des solutions de recyclage innovantes.\n",
+                              subject=dechets_recyclage_subject)
+    Suggestion.objects.create(text="- Planification urbaine intégrée pour promouvoir un développement durable et équilibré.\n"
+                                    "- Création d'espaces verts et de parcs urbains pour améliorer la qualité de vie des résidents.\n"
+                                    "- Promotion de la mixité sociale et économique dans les quartiers pour favoriser la cohésion sociale.\n",
+                              subject=urbanisme_subject)
+    Suggestion.objects.create(text="- Investissement dans des infrastructures culturelles telles que des musées, des théâtres et des centres artistiques.\n"
+                                    "- Organisation d'événements culturels et artistiques pour dynamiser la vie communautaire.\n"
+                                    "- Soutien aux initiatives locales visant à préserver et promouvoir le patrimoine culturel de la région.\n",
+                              subject=loisirs_culture_subject)
 
 
 @receiver(post_migrate)
 def on_post_migrate(sender, **kwargs):
     create_default_subjects(sender)
+
+
+User = get_user_model()
 
 
 class Problem(models.Model):
@@ -57,6 +102,7 @@ class Problem(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='img/', blank=True, null=True)
     importance = models.IntegerField(default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='problems',null=False,blank=False)
 
     def __str__(self):
         return self.nom
@@ -79,7 +125,7 @@ class Problem(models.Model):
         subject_id = request.POST.get('subject')
         description = request.POST.get('message')
         image = request.FILES.get('photo')
-
+        user = request.user
         if not nom:
             raise ValueError("Le champ 'nom' est requis.")
 
@@ -90,6 +136,7 @@ class Problem(models.Model):
             description=description,
             etat="En attente",
             image=image,
+            user=user
         )
         importance = 1
         if subject_id and description:
@@ -102,3 +149,5 @@ class Problem(models.Model):
 
         status = True
         return status
+
+

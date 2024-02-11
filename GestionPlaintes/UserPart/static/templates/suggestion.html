@@ -36,23 +36,34 @@
         <div class="container">
             <h1>Suggérer une solution</h1>
             <p>
-                Vous rencontrez un problème de circulation ou d'électricité ?
+                Vous rencontrez un problème ?
                 Dites-nous en plus et nous vous proposerons une solution.
             </p>
             <form action="#" method="post">
                 <label for="probleme">Type de problème:</label>
                 <select id="subject" name="subject">
-                    {% for subject in subjects %}
-                    <option value="{{ subject.id }}">{{ subject.name }}</option>
+                    {% for suggestion in suggestions %}
+                        <option value="{{ suggestion.id }}">{{ suggestion.subject }}</option>
                     {% endfor %}
-                </select>
-                <br>
+                </select><br>
                 <div id="conseils"></div>
             </form>
         </div>
         <script src="{% static 'js/script.js'%}"></script>
         <script src="{% static 'js/suggestion.js'%}"></script>
+        <script>
+            document.getElementById("subject").addEventListener("change", function() {
+                var selectedOption = this.value;
+                var suggestions = JSON.parse('{{ suggestions_json|escapejs }}');
+                var selectedSuggestion = suggestions.find(suggestion => suggestion.id === selectedOption);
+                if (selectedSuggestion) {
+                    document.getElementById("conseils").innerText = selectedSuggestion.text;
+                } else {
+                    document.getElementById("conseils").innerText = "";
+                }
+            });
+        </script>
+
     </div>
 </body>
-
 </html>

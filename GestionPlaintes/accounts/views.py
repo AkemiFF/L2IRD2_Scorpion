@@ -25,9 +25,6 @@ def index(request):
         return x
 
 
-
-
-
 def logout_view(request):
     logout(request)
     return redirect("page_1")

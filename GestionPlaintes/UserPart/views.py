@@ -1,21 +1,21 @@
 from django.shortcuts import render, redirect
-from .models import Problem, Subject
+from .models import Problem, Subject, Suggestion
 from BackOffice.models import Message
 from django.contrib.auth.decorators import login_required
 
 
 @login_required
 def suggestion(request):
-    subjects = Subject.objects.all()
+    suggestions = Suggestion.objects.all()
     user = request.user
-    context = {"subjects": subjects, 'title': "Scorpion", "user": user}
+    context = {"suggestions": suggestions, 'title': "Scorpion", "user": user}
     return render(request, 'suggestion.html', context)
 
 
 def index(request):
     if request.user.is_authenticated:
         msg = "Bienvenue aux nouveaux adhérents"
-        context = {"message_acceuil": msg}
+        context = {"message_acceuil": msg, "title": "Acceuil"}
         return render(request, 'acceuil.html', context)
     else:
         return redirect("page_1")
@@ -43,7 +43,7 @@ def messagerie(request):
         titre = "Gestion Plaintes"
         user = request.user
         messages = Message.objects.filter(user=user)
-        context = {"Title": titre, "messages": messages}
+        context = {"title": titre, "messages": messages}
         return render(request, 'messagerie.html', context)
     else:
         return redirect("page_1")
