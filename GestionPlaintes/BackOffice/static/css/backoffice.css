@@ -27,7 +27,12 @@ table {
     margin-bottom: 20px;
 }
 
-th,
+th {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
 td {
     padding: 12px 15px;
     text-align: center;
@@ -182,4 +187,19 @@ th {
     border-radius: 30px;
     cursor: pointer;
     transition: .3s ease;
+}
+
+.btn-click {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    padding-top: 12px;
+}
+
+button{
+    margin-left: 10px;
+}
+button:hover {
+    background-color: gray;
 }

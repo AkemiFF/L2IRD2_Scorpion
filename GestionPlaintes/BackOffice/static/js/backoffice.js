@@ -1,3 +1,4 @@
+// CODE JS POUR BACKOFFICE
 function openModal(modalId) {
     var modal = document.getElementById(modalId);
     modal.style.display = "block";
@@ -13,12 +14,9 @@ function confirmCloseTicket() {
 }
 
 // Button next et prev
-// Définir une variable pour garder une trace de la page actuelle
 let currentPage = 1;
-// Définir le nombre de lignes par page
 const rowsPerPage = 5;
 
-// Cette fonction affiche les tickets pour la page spécifiée
 function displayTickets(page) {
     const startIndex = (page - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
@@ -33,7 +31,6 @@ function displayTickets(page) {
     });
 }
 
-// Cette fonction affiche la page précédente
 function prevPage() {
     if (currentPage > 1) {
         currentPage--;
@@ -41,7 +38,6 @@ function prevPage() {
     }
 }
 
-// Cette fonction affiche la page suivante
 function nextPage() {
     const tickets = document.querySelectorAll('#ticket-table tbody tr').length;
     const totalPages = Math.ceil(tickets / rowsPerPage);
@@ -51,5 +47,4 @@ function nextPage() {
     }
 }
 
-// Appeler la fonction pour afficher les tickets de la première page au chargement de la page
 displayTickets(currentPage);
