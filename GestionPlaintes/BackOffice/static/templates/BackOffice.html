@@ -7,8 +7,15 @@
 
 <body>
     <div class="wrapper">
-        <!---------------------------Navigation---------------------------------->
         {% include 'nav.html' %}
+        {% for problem in problems %}
+            <div>
+                <p>{{ problem.nom }}</p>
+                <p>{{ problem.date }}</p>
+
+            </div>
+        {% endfor %}
+
     </div>
 </body>
 

@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
+from UserPart.models import Problem
 
 
 def back(request):
-    return render(request, "BackOffice.html")
+    problems = Problem.objects.all()
+    context = {"title": "Responsable", "problems": problems}
+
+    return render(request, "BackOffice.html", context)
