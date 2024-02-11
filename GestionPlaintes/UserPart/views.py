@@ -21,8 +21,8 @@ def suggestion(request):
     return render(request, 'suggestion.html')
 
 
-def service(request):
-    return render(request, 'service.html')
+def messagerie(request):
+    return render(request, 'messagerie.html')
 
 
 def contact(request):
