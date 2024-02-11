@@ -1,14 +1,225 @@
-{% load static %}
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     {% include 'head.html' %}
 </head>
+<style>
+    /* Style général */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* En-tête */
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Conteneur principal */
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    /* Tableau des tickets */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Formulaire de feedback */
+    .feedback-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .feedback-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .feedback-form input[type="text"],
+    .feedback-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .feedback-form input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .feedback-form input[type="submit"]:hover {
+        background-color: #555;
+    }
+
+    /* Matrice Eisenhower */
+    .eisenhower-matrix {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .eisenhower-matrix h2 {
+        text-align: center;
+    }
+
+    .quadrant {
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .urgent-important {
+        background-color: #FF5733;
+        /* Rouge */
+    }
+
+    .important-not-urgent {
+        background-color: #FFC300;
+        /* Jaune */
+    }
+
+    .urgent-not-important {
+        background-color: #4CAF50;
+        /* Vert */
+    }
+
+    .not-urgent-not-important {
+        background-color: #3498DB;
+        /* Bleu */
+    }
+
+    .quadrant h2 {
+        margin-top: 0;
+        color: #fff;
+    }
+
+    .tasks {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .tasks li {
+        margin-bottom: 10px;
+    }
+
+    .tasks li span {
+        font-weight: bold;
+    }
+</style>
 
 <body>
     <div class="wrapper">
+        <!---------------------------Navigation---------------------------------->
         {% include 'nav.html' %}
+
+        <div class="container">
+            <h2>Liste des Tickets</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Numéro de Ticket</th>
+                        <th>Priorité</th>
+                        <th>État</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemple de ligne de ticket -->
+                    <tr>
+                        <td>TCKT001</td>
+                        <td>Urgent et Important</td>
+                        <td>En cours</td>
+                        <td>
+                            <button>Assigner Priorité</button>
+                            <button>Envoyer Feedback</button>
+                            <button>Demande d'Information</button>
+                            <button>Cloturer</button>
+                        </td>
+                    </tr>
+                    <!-- Fin de l'exemple -->
+                </tbody>
+            </table>
+
+            <div class="eisenhower-matrix">
+                <div class="quadrant urgent-important">
+                    <h2>Urgent et Important</h2>
+                    <ul class="tasks">
+                        <!-- Tâches urgentes et importantes -->
+                        <li><span>Tâche 1:</span> Description de la tâche</li>
+                        <li><span>Tâche 2:</span> Description de la tâche</li>
+                        <!-- Fin des tâches urgentes et importantes -->
+                    </ul>
+                </div>
+                <div class="quadrant important-not-urgent">
+                    <h2>Important mais Pas Urgent</h2>
+                    <ul class="tasks">
+                        <!-- Tâches importantes mais pas urgentes -->
+                        <li><span>Tâche 3:</span> Description de la tâche</li>
+                        <li><span>Tâche 4:</span> Description de la tâche</li>
+                        <!-- Fin des tâches importantes mais pas urgentes -->
+                    </ul>
+                </div>
+                <div class="quadrant urgent-not-important">
+                    <h2>Urgent mais Pas Important</h2>
+                    <ul class="tasks">
+                        <!-- Tâches urgentes mais pas importantes -->
+                        <li><span>Tâche 5:</span> Description de la tâche</li>
+                        <!-- Fin des tâches urgentes mais pas importantes -->
+                    </ul>
+                </div>
+                <div class="quadrant not-urgent-not-important">
+                    <h2>Pas Urgent et Pas Important</h2>
+                    <ul class="tasks">
+                        <!-- Tâches pas urgentes et pas importantes -->
+                        <li><span>Tâche 6:</span> Description de la tâche</li>
+                        <!-- Fin des tâches pas urgentes et pas importantes -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
+
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backoffice</title>
+
+</head>

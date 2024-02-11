@@ -1,9 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% include 'head.html' %}
 </head>
+<style>
+    /* Style général */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* En-tête */
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Conteneur principal */
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    /* Tableau des tickets */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Formulaire de feedback */
+    .feedback-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .feedback-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .feedback-form input[type="text"],
+    .feedback-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .feedback-form input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .feedback-form input[type="submit"]:hover {
+        background-color: #555;
+    }
+</style>
+
 <body>
-fds
+    <div class="wrapper">
+        <!---------------------------Navigation---------------------------------->
+        {% include 'nav.html' %}
+
+        <header>
+            <h1>Backoffice</h1>
+        </header>
+
+        <div class="container">
+            <h2>Liste des Tickets</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Numéro de Ticket</th>
+                        <th>Priorité</th>
+                        <th>État</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemple de ligne de ticket -->
+                    <tr>
+                        <td>TCKT001</td>
+                        <td>Haute</td>
+                        <td>En cours</td>
+                        <td>
+                            <button>Assigner Priorité</button>
+                            <button>Envoyer Feedback</button>
+                            <button>Demande d'Information</button>
+                            <button>Cloturer</button>
+                        </td>
+                    </tr>
+                    <!-- Fin de l'exemple -->
+                </tbody>
+            </table>
+
+            <div class="feedback-form">
+                <h2>Envoyer Feedback</h2>
+                <form action="#">
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4" required></textarea><br>
+                    <label for="resolution-date">Date Probable de Résolution:</label>
+                    <input type="text" id="resolution-date" name="resolution-date" required><br>
+                    <input type="submit" value="Envoyer Feedback">
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
 </body>
+
 </html>
