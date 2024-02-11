@@ -5,6 +5,7 @@
 <head>
     {% include 'head.html' %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/suggestion.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 <label for="probleme">Type de problème:</label>
                 <select id="subject" name="subject">
                     {% for subject in subjects %}
-                        <option value="{{ subject.id }}">{{ subject.name }}</option>
+                    <option value="{{ subject.id }}">{{ subject.name }}</option>
                     {% endfor %}
                 </select>
                 <br>
