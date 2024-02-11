@@ -1,11 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Problem, Subject
 from BackOffice.models import Message
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def suggestion(request):
+    subjects = Subject.objects.all()
+    user = request.user
+    context = {"subjects": subjects, 'title': "Scorpion", "user": user}
+    return render(request, 'suggestion.html', context)
 
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, 'acceuil.html')
+        msg = "Bienvenue à vous nouveau joueur"
+        context = {"message_acceuil": msg}
+        return render(request, 'acceuil.html', context)
     else:
         return redirect("page_1")
 
@@ -27,17 +38,12 @@ def probleme(request):
         return redirect("page_1")
 
 
-def suggestion(request):
-    subjects = Subject.objects.all()
-    context = {"subjects": subjects, 'title': "Scorpion"}
-    return render(request, 'suggestion.html', context)
-
-
 def messagerie(request):
     titre = "Gestion Plaintes"
-    msg = Message.objects.all()
-    context = {"Title": titre, "message": msg}
-    return render(request, 'messagerie.html')
+    user = request.user
+    messages = Message.objects.filter(user=user)
+    context = {"Title": titre, "messages": messages}
+    return render(request, 'messagerie.html', context)
 
 
 def contact(request):

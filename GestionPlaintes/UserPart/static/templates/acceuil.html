@@ -31,17 +31,12 @@
                 <h4>TEST GESTION P</h4>
                 <h1><span>TEST</span> GEST POINT POITN</h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi laborum provident quam soluta
-                    rerum?
-                    Sint,
-                    cupiditate? Impedit odio placeat at est consequatur dolorem aspernatur libero labore id debitis.
-                    Sequi,
-                    incidunt!
+                    {{ message_acceuil }}
                 </p>
 
                 <div class="nav-button">
-                    <button class="btn white-btn"><a href="{% url 'probleme' %}">Probleme</a></button>
-                    <button class="btn white-btn"><a href="{% url 'suggestion' %}">Suggestion</a></button>
+                    <a href="{% url 'probleme' %}"><button class="btn white-btn">Probleme</button></a>
+                    <a href="{% url 'suggestion' %}"><button class="btn white-btn">Suggestion</button></a>
 
                 </div>
                 <div class="nav-button">
