@@ -60,7 +60,7 @@ media/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-
+django-oscar/
 # Flask stuff:
 instance/
 .webassets-cache
