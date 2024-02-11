@@ -14,7 +14,7 @@ def suggestion(request):
 
 def index(request):
     if request.user.is_authenticated:
-        msg = "Bienvenue aux nouveaux adhérents"
+        msg = "Solution pour les soucis, n'importe quand n'importe ou"
         context = {"message_acceuil": msg}
         return render(request, 'acceuil.html', context)
     else:
