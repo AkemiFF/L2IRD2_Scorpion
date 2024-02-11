@@ -76,8 +76,17 @@
                             </a>
                         </td>
                         <td class="btn-click">
-                            <button><a href="{% url 'feedback' problem.id %}">Envoyer Feedback</a></button>
-                            <button><a href="{% url 'cloturer' problem.id %}">Cloturer</a></button>
+                            <form action="{% url 'feedback' problem.id %}" method="post">
+                                {% csrf_token %}
+                                {% if problem.etat == "En attente" %}
+                                    <button type="submit">Envoyer Feedback</button>
+
+                                {% endif %}
+                            </form>
+                            <form action="{% url 'cloturer' problem.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Cloturer</button>
+                            </form>
                         </td>
                     </tr>
                 </tbody>

@@ -31,11 +31,17 @@
                         <td class="btn-click td">
                             <form action="{% url 'feedback' problem.id %}" method="post">
                                 {% csrf_token %}
+                                {% if problem.etat == "En attente" %}
                                 <button type="submit">Envoyer Feedback</button>
+                                {% endif %}
                             </form>
                             <form action="{% url 'cloturer' problem.id %}" method="post">
+                            {% if problem.etat == "En cours" %}
                                 {% csrf_token %}
                                 <button type="submit">Cloturer</button>
+                            {% else %}
+                                <button type="submit" disabled >Cloturer</button>
+                            {% endif %}
                             </form>
                         </td>
                     </tr>
