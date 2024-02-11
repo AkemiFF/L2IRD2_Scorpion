@@ -9,11 +9,33 @@
 </head>
 <style>
     body {
-        background: url("{% static 'img/index.png'%}");
+        background: url("{% static 'img/Acceuil.png'%}");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
+    }
+
+    header {
+        color: #fff;
+        font-size: 30px;
+        text-align: center;
+        padding: 20px 0;
+        background-color: transparent;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 16.5);
+    }
+
+    header a {
+        color: #ff6f00;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    header a:hover {
+        color: #ff9000;
+        /* Changement de couleur au survol */
     }
 </style>
 

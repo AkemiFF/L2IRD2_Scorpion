@@ -8,16 +8,27 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/backoffice.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
     <style>
+        body {
+            background: url("{% static 'img/Messagerie.png'%}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+        }
+    </style>
+
+    <style>
         .container {
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: transparent;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 21.8);
         }
 
         h1 {
+            color: #ccc;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -30,11 +41,12 @@
 
         .message p {
             margin: 0;
+            color: #ccc;
         }
 
         .message span {
             font-size: 0.8em;
-            color: #666;
+            color: #ccc;
         }
     </style>
 </head>
