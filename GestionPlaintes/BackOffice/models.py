@@ -14,3 +14,5 @@ class Message(models.Model):
 
     def __str__(self):
         return f"Message to {self.user} regarding {self.problem}"
+
+

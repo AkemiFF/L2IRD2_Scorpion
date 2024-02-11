@@ -1,5 +1,5 @@
 from UserPart.models import Problem, Subject,Keyword
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Problem, Message
 
 
@@ -48,5 +48,8 @@ def cloturer(request, problem_id):
 
     return render(request, "BackOffice.html", context)
 
-
+def delete_message(request, mess_id):
+    message = Message.objects.get(id=mess_id)
+    message.delete()
+    return redirect('messagerie')
 
