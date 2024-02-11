@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var image = document.getElementById('image');
 
     inscriptionBtn.addEventListener('click', function () {
-    // vers index.php
     });
 
     nameField.addEventListener('input', function () {
@@ -118,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var passwordField = document.getElementById('password-inscrip');
 
     inscriptionBtn.addEventListener('click', function () {
-    //    Vers index.php
 
     });
 
@@ -137,4 +135,5 @@ document.addEventListener('DOMContentLoaded', function () {
     passwordField.addEventListener('input', function () {
         passwordField.classList.remove('is-invalid');
     });
+
 });
