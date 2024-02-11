@@ -79,7 +79,9 @@
                     <p>{{ message.content }}</p>
                     <span>reçu le {{ message.sent_at }}</span>
                 </div>
-                <a href="{% url %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="{% url 'delete_message' mess_id=message.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
             </div>
             {% endfor %}
             {% else %}

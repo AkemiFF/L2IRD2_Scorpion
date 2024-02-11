@@ -48,8 +48,3 @@ def cloturer(request, problem_id):
 
     return render(request, "BackOffice.html", context)
 
-def delete_message(request, mess_id):
-    message = Message.objects.get(id=mess_id)
-    message.delete()
-    return redirect('messagerie')
-

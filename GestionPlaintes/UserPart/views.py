@@ -47,3 +47,9 @@ def messagerie(request):
         return render(request, 'messagerie.html', context)
     else:
         return redirect("page_1")
+    
+    
+def delete_message(request, mess_id):
+    message = Message.objects.get(id=mess_id)
+    message.delete()
+    return redirect('messagerie')
