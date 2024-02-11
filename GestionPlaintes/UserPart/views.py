@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 def suggestion(request):
     suggestions = Suggestion.objects.all()
     user = request.user
-    context = {"suggestions": suggestions, 'title': "Scorpion", "user": user}
+    context = {"suggestions": suggestions, 'title': "Suggestion", "user": user}
     return render(request, 'suggestion.html', context)
 
 
@@ -25,7 +25,7 @@ def probleme(request):
     if request.user.is_authenticated:
         subjects = Subject.objects.all()
         added = False
-        context = {"subjects": subjects, 'title': "Scorpion", "added": added}
+        context = {"subjects": subjects, 'title': "Formulaire Problème", "added": added}
         if request.method == 'POST':
             problem = Problem.create_from_request(request)
             if problem:
@@ -40,7 +40,7 @@ def probleme(request):
 
 def messagerie(request):
     if request.user.is_authenticated:
-        titre = "Gestion Plaintes"
+        titre = "Messagerie"
         user = request.user
         messages = Message.objects.filter(user=user)
         context = {"title": titre, "messages": messages}
