@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/backoffice.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
-
     <style>
         .container {
             max-width: 800px;
@@ -43,32 +42,15 @@
 <body>
     <div class="wrapper">
         {% include 'nav.html' %}
-<<<<<<< HEAD
         {{ message.content}}
-=======
-
         <div class="container">
             <h1>Ma Messagerie</h1>
+            {% for message in messages %}
             <div class="message">
-                <p>Une phrase</p>
+                <p>{{ message.content }}</p>
                 <span>reçu le 10/10/24 à 18h30</span>
             </div>
-            <div class="message">
-                <p>Une phrase</p>
-                <span>reçu le 10/10/24 à 18h30</span>
-            </div>
-            <div class="message">
-                <p>Une phrase</p>
-                <span>reçu le 10/10/24 à 18h30</span>
-            </div>
-            <div class="message">
-                <p>Une phrase</p>
-                <span>reçu le 10/10/24 à 18h30</span>
-            </div>
-            <div class="message">
-                <p>Une phrase</p>
-                <span>reçu le 10/10/24 à 18h30</span>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </body>
