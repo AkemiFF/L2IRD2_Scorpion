@@ -50,8 +50,6 @@
         }
 
         .fa {
-            display: flex;
-            width: 100px;
             color: #ccc;
             cursor: pointer;
             text-align: end;
@@ -76,7 +74,7 @@
             {% for message in messages %}
             <div class="message_1">
                 <div class="message">
-                    <p>{{ message.content }}</p>
+                    <p><i class="fa fa-arrow-left"></i> {{ message.content }}</p>
                     <span>reçu le {{ message.sent_at }}</span>
                 </div>
                 <a href="{% url 'delete_message' mess_id=message.id %}">
@@ -84,11 +82,26 @@
                 </a>
             </div>
             {% endfor %}
-            {% else %}
+            {% endif %}
+
+            {% if not problems and not messages%}
             <div class="message">
                 <p>Vous n'avez aucun message.</p>
             </div>
             {% endif %}
+
+            {% if problems %}
+            {% for problem in problems %}
+            <div class="message_1">
+                <div class="message">
+                    <p><i class="fa fa-arrow-right"></i> {{ problem.subject }}</p>
+                    <span>envoyé le {{ problem.date }}</span>
+                </div>
+
+            </div>
+            {% endfor %}
+            {% endif %}
+
         </div>
     </div>
 </body>
