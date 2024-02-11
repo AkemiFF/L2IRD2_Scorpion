@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "head.html" %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/backoffice.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <table id="ticket-table">
+                <tbody>
+                    <tr>
+                        <td>{{ problem.id }}</td>
+                        <td>{{ problem.subject }}</td>
+                        <td>{{ problem.etat }}</td>
+                        <td class="btn-click">
+                            <button><a href="{% url 'feedback' problem.id %}">Envoyer Feedback</a></button>
+                            <button><a href="{% url 'cloturer' problem.id %}">Cloturer</a></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="{% url 'backoffice' %}"> <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
