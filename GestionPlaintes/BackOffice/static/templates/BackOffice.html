@@ -59,8 +59,8 @@
                                 <button type="submit">Cloturer</button>
                                 {% else %}
                                 <button type="submit" disabled>Cloturer</button>
+                                <a href="{% url 'delete_problem' problem.id  %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                 {% endif %}
-                               <i class="fa fa-trash" aria-hidden="true"></i>
                             </form>
                         </td>
                     </tr>

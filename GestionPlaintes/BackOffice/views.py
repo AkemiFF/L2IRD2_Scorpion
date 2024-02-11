@@ -48,3 +48,8 @@ def cloturer(request, problem_id):
 
     return render(request, "BackOffice.html", context)
 
+
+def delete_problem(request, problem_id):
+    prob = Problem.objects.get(id=problem_id)
+    prob.delete()
+    return redirect('backoffice')
