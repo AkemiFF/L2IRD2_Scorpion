@@ -30,10 +30,13 @@ def on_post_migrate(sender, **kwargs):
     create_default_subjects(sender)
 
 
+
+
 class Problem(models.Model):
     nom = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     email = models.EmailField()
+    etat = models.CharField(max_length=200, default="En attente", blank=False, null=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     description = models.TextField()
     image = models.ImageField(upload_to='problem_images/', blank=True, null=True)
@@ -58,6 +61,7 @@ class Problem(models.Model):
             email=email,
             subject_id=subject_id,
             description=description,
+            etat="En attente",
             image=image
         )
         status = True
