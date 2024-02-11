@@ -1,5 +1,7 @@
+/* CODE CSS SUR BACKOFFICE */
 body {
     font-family: Arial, sans-serif;
+    background-color: rgba(39, 39, 39, 0.4);
     margin: 0;
     padding: 0;
 }
@@ -13,7 +15,8 @@ header {
 
 .container {
     border: 1px solid #fff;
-    max-width: 1200px;
+    max-width: 1500px;
+    width: 100%;
     margin: 20px auto;
     padding: 20px;
 }
