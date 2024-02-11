@@ -11,8 +11,6 @@
 
 <body>
     <div class="wrapper">
-        <!---------------------------Navigation---------------------------------->
-
         <div class="container">
             <h2>Liste des Problemes</h2>
             <table id="ticket-table">
@@ -32,14 +30,22 @@
                         <td>{{ problem.subject }}</td>
                         <td>{{ problem.etat }}</td>
                         <td class="btn-click">
-                            <button><a href="{% url 'feedback' problem.id %}">Envoyer Feedback</a></button>
-                            <button><a href="{% url 'cloturer' problem.id %}">Cloturer</a></button>
+                            <form action="{% url 'feedback' problem.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Envoyer Feedback</button>
+                            </form>
+
+                            <form action="{% url 'cloturer' problem.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Cloturer</button>
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}
 
                 </tbody>
             </table>
+
             <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
             <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
 
@@ -49,13 +55,14 @@
                     <table id="ticket-table">
                         <tbody>
                             {% for problem in problems %}
+
                                 {% if problem.importance > 6 %}
                                 <tr>
                                     <td>{{ problem.id }}</td>
                                     <td>{{ problem.subject }}</td>
                                     <td>{{ problem.etat }}</td>
                                     <td class="btn-click">
-                                        <button><a href="{% url 'viewinfo' problem.id %}">Voir</a></button>
+                                        <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                     </td>
                                 </tr>
                                 {% endif %}
@@ -75,7 +82,7 @@
                                     <td>{{ problem.subject }}</td>
                                     <td>{{ problem.etat }}</td>
                                     <td class="btn-click">
-                                        <button><a href="{% url 'viewinfo' problem.id %}">Voir</a></button>
+                                        <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                     </td>
                                 </tr>
                                 {% endif %}
@@ -89,13 +96,14 @@
                     <table id="ticket-table">
                         <tbody>
                             {% for problem in problems %}
+
                                 {% if  2 < problem.importance and problem.importance <= 4 %}
                                 <tr>
                                     <td>{{ problem.id }}</td>
                                     <td>{{ problem.subject }}</td>
                                     <td>{{ problem.etat }}</td>
                                     <td class="btn-click">
-                                        <button><a href="{% url 'viewinfo' problem.id %}">Voir</a></button>
+                                        <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                     </td>
                                 </tr>
                                 {% endif %}
@@ -115,7 +123,7 @@
                                     <td>{{ problem.subject }}</td>
                                     <td>{{ problem.etat }}</td>
                                     <td class="btn-click">
-                                        <button><a href="{% url 'viewinfo' problem.id %}">Voir</a></button>
+                                        <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
                                     </td>
                                 </tr>
                                 {% endif %}

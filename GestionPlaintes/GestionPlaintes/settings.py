@@ -83,7 +83,19 @@ DATABASES = {
     }
 }
 
+"""
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'AkemiFf$Scorpion',
+        'USER': 'AkemiFf',
+        'PASSWORD': 'scorpion',
+        'HOST': 'AkemiFf.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    }
+}
+"""
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
