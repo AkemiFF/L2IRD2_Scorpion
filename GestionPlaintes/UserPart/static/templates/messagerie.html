@@ -48,6 +48,21 @@
             font-size: 0.8em;
             color: #ccc;
         }
+
+        .fa {
+            display: flex;
+            width: 100px;
+            color: #ccc;
+            cursor: pointer;
+            text-align: end;
+        }
+
+        .message_1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -59,9 +74,12 @@
             <h1>Ma Messagerie</h1>
             {% if messages %}
             {% for message in messages %}
-            <div class="message">
-                <p>{{ message.content }}</p>
-                <span>reçu le {{ message.sent_at }}</span>
+            <div class="message_1">
+                <div class="message">
+                    <p>{{ message.content }}</p>
+                    <span>reçu le {{ message.sent_at }}</span>
+                </div>
+                <a href="{% url %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
             {% endfor %}
             {% else %}
