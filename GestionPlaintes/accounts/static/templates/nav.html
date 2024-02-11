@@ -1,4 +1,22 @@
 <!---------------------------Navigation---------------------------------->
+{% load static %}
+<style>
+    #admin_icon {
+        color: #FFF;
+        margin: 10px;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    #admin_icon:hover {
+        color: gray;
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
 <nav class="nav">
     <div class="nav-logo">
         <p><span>S</span>coo<span class="chat">r</span>pion</p>
@@ -22,6 +40,7 @@
     <div class="nav-button">
         <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
         <button class="btn" id="registerBtn" onclick="register()">S'inscrire</button>
+        <i class="fa fa-user" id="admin_icon"></i>
     </div>
     {% endif %}
     <div class="nav-menu-btn">

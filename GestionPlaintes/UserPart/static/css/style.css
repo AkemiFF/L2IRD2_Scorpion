@@ -11,7 +11,7 @@
 }
 
 body {
-    background: url("{% static 'img/fond10.JPG'%}");
+    /* background: url("{% static 'img/fond10.JPG'%}"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
