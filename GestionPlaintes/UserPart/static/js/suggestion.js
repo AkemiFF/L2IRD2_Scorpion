@@ -1,9 +1,9 @@
 function changeConseils() {
-    var probleme = document.getElementById("probleme").value;
-    var conseilsElement = document.getElementById("conseils");
-    if (probleme === "circulation") {
-        conseilsElement.innerHTML = `
-      <h2>Conseils pour les problèmes de circulation:</h2>
+  var probleme = document.getElementById("probleme").value;
+  var conseilsElement = document.getElementById("conseils");
+  if (probleme === "Administratrion") {
+    conseilsElement.innerHTML = `
+      <h2>Administratrion :</h2>
 
       <p>
         <ul>
@@ -15,8 +15,8 @@ function changeConseils() {
       </p>
       
     `;
-    } else if (probleme === "electricite") {
-        conseilsElement.innerHTML = `
+  } else if (probleme === "electricite") {
+    conseilsElement.innerHTML = `
       <h2>Conseils pour les problèmes d'électricité:</h2>
 
       <p>
@@ -29,14 +29,14 @@ function changeConseils() {
       </p>
 
     `;
-    } else {
-        conseilsElement.innerHTML = `
+  } else {
+    conseilsElement.innerHTML = `
       <h2>Veuillez choisir entre: </h2>
 
       <p> <li>  Circulation et Eléctricité </li> </p>
       
     `;
-    }
+  }
 }
 
 document.getElementById("probleme").addEventListener("change", changeConseils);
