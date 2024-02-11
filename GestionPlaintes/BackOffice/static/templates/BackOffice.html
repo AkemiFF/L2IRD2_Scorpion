@@ -46,29 +46,83 @@
             <div class="eisenhower-matrix">
                 <div class="quadrant urgent-important">
                     <h2>Urgent et Important</h2>
-                    <ul class="tasks">
-                        <li><span>Tâche 1:</span> Description de la tâche</li>
-                        <li><span>Tâche 2:</span> Description de la tâche</li>
-                    </ul>
+                    <table id="ticket-table">
+                        <tbody>
+                            {% for problem in problems %}
+                                {% if problem.importance > 6 %}
+                                <tr>
+                                    <td>{{ problem.id }}</td>
+                                    <td>{{ problem.subject }}</td>
+                                    <td>{{ problem.etat }}</td>
+                                    <td class="btn-click">
+                                        <button><a href="{% url 'feedback' problem.id %}">Voir</a></button>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
                 </div>
                 <div class="quadrant important-not-urgent">
                     <h2>Important mais Pas Urgent</h2>
-                    <ul class="tasks">
-                        <li><span>Tâche 3:</span> Description de la tâche</li>
-                        <li><span>Tâche 4:</span> Description de la tâche</li>
-                    </ul>
+                    <table id="ticket-table">
+                        <tbody>
+                            {% for problem in problems %}
+                                {% if  4 < problem.importance and problem.importance <= 6 %}
+                                <tr>
+                                    <td>{{ problem.id }}</td>
+                                    <td>{{ problem.subject }}</td>
+                                    <td>{{ problem.etat }}</td>
+                                    <td class="btn-click">
+                                        <button><a href="{% url 'feedback' problem.id %}">Voir</a></button>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
                 </div>
                 <div class="quadrant urgent-not-important">
                     <h2>Urgent mais Pas Important</h2>
-                    <ul class="tasks">
-                        <li><span>Tâche 5:</span> Description de la tâche</li>
-                    </ul>
+                    <table id="ticket-table">
+                        <tbody>
+                            {% for problem in problems %}
+                                {% if  2 < problem.importance and problem.importance <= 4 %}
+                                <tr>
+                                    <td>{{ problem.id }}</td>
+                                    <td>{{ problem.subject }}</td>
+                                    <td>{{ problem.etat }}</td>
+                                    <td class="btn-click">
+                                        <button><a href="{% url 'feedback' problem.id %}">Voir</a></button>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
                 </div>
                 <div class="quadrant not-urgent-not-important">
                     <h2>Pas Urgent et Pas Important</h2>
-                    <ul class="tasks">
-                        <li><span>Tâche 6:</span> Description de la tâche</li>
-                    </ul>
+                    <table id="ticket-table">
+                        <tbody>
+                            {% for problem in problems %}
+                                {% if problem.importance <= 2 %}
+                                <tr>
+                                    <td>{{ problem.id }}</td>
+                                    <td>{{ problem.subject }}</td>
+                                    <td>{{ problem.etat }}</td>
+                                    <td class="btn-click">
+                                        <button><a href="{% url 'feedback' problem.id %}">Voir</a></button>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

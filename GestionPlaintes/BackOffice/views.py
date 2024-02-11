@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from UserPart.models import Problem
+from UserPart.models import Problem, Subject,Keyword
 
 
 def back(request):
     problems = Problem.objects.all()
-    context = {"title": "Responsable", "problems": problems}
+    subjects = Subject.objects.all()
+    keyword = Keyword.objects.all()
+    context = {"title": "Responsable", "problems": problems, "subjects": subjects, "keyword": keyword}
 
     return render(request, "BackOffice.html", context)
 
