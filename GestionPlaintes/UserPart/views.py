@@ -47,7 +47,3 @@ def messagerie(request):
         return render(request, 'messagerie.html', context)
     else:
         return redirect("page_1")
-
-
-def contact(request):
-    return render(request, 'contact.html')
