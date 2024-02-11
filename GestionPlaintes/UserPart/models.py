@@ -30,8 +30,6 @@ def on_post_migrate(sender, **kwargs):
     create_default_subjects(sender)
 
 
-
-
 class Problem(models.Model):
     nom = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
@@ -43,6 +41,16 @@ class Problem(models.Model):
 
     def __str__(self):
         return self.nom
+
+    def changer_etat_en_cours(self):
+        if self.etat != "Terminé":
+            self.etat = "En cours"
+        self.save()
+
+    def changer_etat_termine(self):
+        self.etat = "Terminé"
+        self.save()
+
 
     @classmethod
     def create_from_request(cls, request):

@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from UserPart.models import Problem
 
@@ -6,4 +7,20 @@ def back(request):
     problems = Problem.objects.all()
     context = {"title": "Responsable", "problems": problems}
 
+    return render(request, "BackOffice.html", context)
+
+
+def feedback(request, problem_id):
+    problems = Problem.objects.all()
+    context = {"title": "Responsable", "problems": problems}
+    problem = Problem.objects.get(id=problem_id)
+    problem.changer_etat_en_cours()
+    return render(request, "BackOffice.html", context)
+
+
+def cloturer(request, problem_id):
+    problems = Problem.objects.all()
+    context = {"title": "Responsable", "problems": problems}
+    problem = Problem.objects.get(id=problem_id)
+    problem.changer_etat_termine()
     return render(request, "BackOffice.html", context)
