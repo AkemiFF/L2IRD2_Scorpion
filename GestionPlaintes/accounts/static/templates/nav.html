@@ -1,28 +1,28 @@
 <!---------------------------Navigation---------------------------------->
-        <nav class="nav">
-            <div class="nav-logo">
-                <p><span>S</span>coo<span class="chat">r</span>pion</p>
-            </div>
-            {% if user.is_authenticated %}
-            <div class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="{% url 'index' %}" class="link active">Accueil</a></li>
-                    <li><a href="{% url 'messagerie' %}" class="link">Messagerie</a></li>
-                    <li><a href="{% url 'contact' %}" class="link">Contact</a></li>
-                </ul>
-            </div>
-            {% endif %}
-            {% if user.is_authenticated %}
-            <div class="nav-button">
-                <button class="btn" id="deconnexion" onclick="register()"><a href="{% url 'logout' %}">Deconnexion</a></button>
-            </div>
-            {% else %}
-            <div class="nav-button">
-                <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
-                <button class="btn" id="registerBtn" onclick="register()">S'inscrire</button>
-            </div>
-            {% endif %}
-            <div class="nav-menu-btn">
-                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
-            </div>
-        </nav>
+<nav class="nav">
+    <div class="nav-logo">
+        <p><span>S</span>coo<span class="chat">r</span>pion</p>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="nav-menu" id="navMenu">
+        <ul>
+            <li><a href="{% url 'index' %}" class="link active">Accueil</a></li>
+            <li><a href="{% url 'messagerie' %}" class="link">Messagerie</a></li>
+            <li><a href="{% url 'contact' %}" class="link">Contact</a></li>
+        </ul>
+    </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <div class="nav-button">
+        <button class="btn" id="deconnexion" onclick="register()"><a href="{% url 'logout' %}">Deconnexion</a></button>
+    </div>
+    {% else %}
+    <div class="nav-button">
+        <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
+        <button class="btn" id="registerBtn" onclick="register()">S'inscrire</button>
+    </div>
+    {% endif %}
+    <div class="nav-menu-btn">
+        <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+    </div>
+</nav>
