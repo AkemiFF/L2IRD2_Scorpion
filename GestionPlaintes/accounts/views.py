@@ -1,6 +1,16 @@
 from django.db import transaction
-from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, authenticate, logout, login
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render, redirect
+
+
+@staff_member_required
+def adminlogin(request):
+    if request.user.is_authenticated:
+        return redirect('backoffice')
+    else:
+        return render(request, 'index.html', {'title': "Scorption"})
+
 
 
 def index(request):
@@ -9,6 +19,9 @@ def index(request):
     else:
         x = condition_acceuil(request)
         return x
+
+
+
 
 
 def logout_view(request):
@@ -26,7 +39,6 @@ def condition_acceuil(request):
                 login(request, user)
                 return redirect('acceuil/')
             else:
-                print("fdssdfqsd", email, password)
                 error_message = "Adresse e-mail ou mot de passe incorrect."
                 return render(request, 'index.html', {'title': "Scorption", 'error_message': error_message})
         elif 'email-inscrip' in request.POST and 'password-inscrip' in request.POST:

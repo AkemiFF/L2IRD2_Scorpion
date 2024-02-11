@@ -40,7 +40,8 @@
     <div class="nav-button">
         <button class="btn white-btn" id="loginBtn" onclick="login()">Se connecter</button>
         <button class="btn" id="registerBtn" onclick="register()">S'inscrire</button>
-        <i class="fa fa-user" id="admin_icon"></i>
+
+        <a href="{% url 'adminLogin' %}"><i class="fa fa-user" id="admin_icon"></i></a>
     </div>
     {% endif %}
     <div class="nav-menu-btn">
