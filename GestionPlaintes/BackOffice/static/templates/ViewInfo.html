@@ -66,9 +66,6 @@
                                 </button>
                             </a>
                         </td>
-                        <td>{{ problem.id }}</td>
-                        <td>{{ problem.subject }}</td>
-                        <td>{{ problem.etat }}</td>
                         <td class="btn-click">
                             <button><a href="{% url 'feedback' problem.id %}">Envoyer Feedback</a></button>
                             <button><a href="{% url 'cloturer' problem.id %}">Cloturer</a></button>
@@ -88,6 +85,9 @@
                                 <td><strong>Email:</strong> {{ problem.email }}</td>
                             </tr>
                             <tr>
+                                <td><strong>Etat:</strong> {{ problem.etat }}</td>
+                            </tr>
+                            <tr>
                                 <td><strong>Sujet:</strong> {{ problem.subject }}</td>
                             </tr>
                             <tr>
@@ -98,12 +98,11 @@
                 </div>
 
                 <div class="quadrant important-not-urgent">
-                    <div class="photo-container">
-                        <img src="{{ problem.image }}" alt="Photo">
-                    </div>
+                <div class="photo-container">
+                    <img src="{{ problem.image.url }}" alt="Photo">
                 </div>
 
-
+                </div>
             </div>
         </div>
     </div>
