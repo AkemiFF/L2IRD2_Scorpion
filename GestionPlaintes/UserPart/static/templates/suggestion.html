@@ -66,20 +66,15 @@
         {% include 'nav.html' %}
         <div class="container">
             <div class="btn-container">
-                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
-                <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
-                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
-                <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
-                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
-                <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
-                <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
+                {% for suggestion in suggestions %}
+                    <button id="prev-btn" class="suggestion-button" data-suggestion-text="{{ suggestion.text }}">{{ suggestion.subject }}</button>
+                {% endfor %}
             </div>
-            <textarea name="text" id="" cols="50" rows="15"></textarea>
+            <textarea name="textfield" id="description" cols="50" rows="15"></textarea>
         </div>
-        <script src="{% static 'js/script.js'%}"></script>
-        <script src="{% static 'js/suggestion.js'%}"></script>
 
+        <script src="{% static 'js/suggestion.js'%}"></script>
+        <script src="{% static 'js/script.js'%}"></script>
     </div>
 </body>
-
 </html>
