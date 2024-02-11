@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
 
     <style>
+        .frame {
+            height: 400px;
+            border: 2px solid black;
+            width: 100%;
+            padding: 10px;
+            display: inline-block;
+
+        }
+
         .retour {
             background-color: red;
             width: 50px;
@@ -47,7 +56,7 @@
         }
 
         .photo-container img {
-            max-width: 100%;
+            min-width: 100%;
             max-height: 100%;
         }
     </style>
@@ -98,11 +107,13 @@
                 </div>
 
                 <div class="quadrant important-not-urgent">
-                <div class="photo-container">
-                    <img src="{{ problem.image.url }}" alt="Photo">
+                    <div class="photo-container">
+                        <div class="frame">
+                            <img src="{{ problem.image.url }}" alt="Photo">
+                        </div>
+                    </div>
                 </div>
 
-                </div>
             </div>
         </div>
     </div>
