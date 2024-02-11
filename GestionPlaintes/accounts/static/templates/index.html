@@ -36,13 +36,13 @@
                     </div>
                     <div class="input-box">
                         <input type="email" class="input-field" id="email" name="email"
-                            placeholder="Nom d'utilisateur ou email">
+                            placeholder="Nom d'utilisateur ou email" required>
                         <small id="error-name" class="form-text text-danger"></small>
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="input-box">
                         <input type="password" class="input-field" id="password" name="password"
-                            placeholder="Mot de passe">
+                            placeholder="Mot de passe" required>
                         <i class="fa fa-lock"></i>
                     </div>
                     <div class="input-box">
@@ -72,11 +72,13 @@
 
                     <div class="two-forms">
                         <div class="input-box">
-                            <input type="text" class="input-field" id="name" name="name" placeholder="Nom de famille">
+                            <input type="text" class="input-field" id="name" name="name" placeholder="Nom de famille"
+                                required>
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="input-box">
-                            <input type="text" class="input-field" id="surname" name="surname" placeholder="Prénom(s)">
+                            <input type="text" class="input-field" id="surname" name="surname" placeholder="Prénom(s)"
+                                required>
                             <i class="fa fa-user"></i>
                         </div>
                     </div>
@@ -87,7 +89,7 @@
                     </div>
                     <div class="input-box">
                         <input type="password" class="input-field" id="password-inscrip" name="password-inscrip"
-                            placeholder="Mot de passe">
+                            placeholder="Mot de passe" required>
                         <i class="fa fa-lock"></i>
                     </div>
 
@@ -106,12 +108,12 @@
 
 
 <script src="{% static 'js/script.js'%}"></script>
-{ % if error_message %}
+<!-- { % if error_message %}
 <script>
     toastr.error('{{ error_message }}', '', {
         positionClass: 'toast-top-center'
     });
 </script>
-{ % endif %}
+{ % endif %} -->
 
 </html>

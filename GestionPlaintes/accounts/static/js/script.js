@@ -48,6 +48,55 @@ document.addEventListener('DOMContentLoaded', function () {
     var image = document.getElementById('image');
 
     inscriptionBtn.addEventListener('click', function () {
+        if (nameField.value.trim() === '') {
+            nameField.classList.add('error');
+            toastr.error('Le nom ne doit pas être vide !', '', {
+                positionClass: 'toast-top-center'
+            });
+            return;
+        } else {
+            nameField.classList.remove('error');
+        }
+
+        if (surnameField.value.trim() === '') {
+            surnameField.classList.add('error');
+            toastr.error('Le prénom ne doit pas être vide !', '', {
+                positionClass: 'toast-top-center'
+            });
+            return;
+        } else {
+            surnameField.classList.remove('error');
+        }
+
+        if (emailField.value.trim() === '') {
+            emailField.classList.add('error');
+            toastr.error('L\'adresse email ne doit pas être vide !', '', {
+                positionClass: 'toast-top-center'
+            });
+            return;
+        } else {
+            emailField.classList.remove('error');
+        }
+
+        if (passwordField.value.trim() === '') {
+            passwordField.classList.add('error');
+            toastr.error('Le mot de passe ne doit pas être vide !', '', {
+                positionClass: 'toast-top-center'
+            });
+            return;
+        } else {
+            passwordField.classList.remove('error');
+        }
+
+        if (image.value.trim() === '') {
+            image.classList.add('error');
+            toastr.error('Veuillez sélectionner une image !', '', {
+                positionClass: 'toast-top-center'
+            });
+            return;
+        } else {
+            image.classList.remove('error');
+        }
     });
 
     nameField.addEventListener('input', function () {
@@ -65,10 +114,12 @@ document.addEventListener('DOMContentLoaded', function () {
     passwordField.addEventListener('input', function () {
         passwordField.classList.remove('error');
     });
+
     image.addEventListener('input', function () {
-        nameField.classList.remove('error');
+        image.classList.remove('error');
     });
 });
+
 
 // Condition lorsque l'utilisateur se connecter
 document.addEventListener('DOMContentLoaded', function () {
