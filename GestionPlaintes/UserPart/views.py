@@ -40,10 +40,12 @@ def probleme(request):
 
 def messagerie(request):
     if request.user.is_authenticated:
+
         titre = "Messagerie"
         user = request.user
+        problems = Problem.objects.filter(user=user)
         messages = Message.objects.filter(user=user)
-        context = {"title": titre, "messages": messages}
+        context = {"title": titre, "messages": messages, "problems": problems}
         return render(request, 'messagerie.html', context)
     else:
         return redirect("page_1")
