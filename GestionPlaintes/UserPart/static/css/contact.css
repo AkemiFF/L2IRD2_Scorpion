@@ -1,0 +1,125 @@
+/* CODE CSS SUR LE CONTACT */
+#conseils {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 16px;
+    background-color: #f7f7f7;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.formulaire {
+    width: 50%;
+}
+
+.coordonnees {
+    width: 50%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+
+
+h3 {
+    font-family: poppins;
+    font-size: 40px;
+    color: orange;
+}
+
+
+
+/* Replace "your_stylesheet.css" with your actual file name */
+@import url("your_stylesheet.css");
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 25px;
+}
+
+.contact-form {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-left: 50px;
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+}
+
+.contact-info h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+}
+
+.contact-info li span.fa {
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

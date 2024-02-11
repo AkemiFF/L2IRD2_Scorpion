@@ -4,11 +4,33 @@
 
 <head>
     {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/suggestion.css' %}">
+
 </head>
 
 <body>
     <div class="wrapper">
         {% include 'nav.html' %}
+        <div class="container">
+            <h1>Suggérer une solution</h1>
+            <p>
+                Vous rencontrez un problème de circulation ou d'électricité ?
+                Dites-nous en plus et nous vous proposerons une solution.
+            </p>
+            <form action="#">
+                <label for="probleme">Type de problème:</label>
+                <select id="probleme" name="probleme" onchange="changeConseils()">
+                    <option value="aucun">Aucun</option>
+                    <option value="circulation">Circulation</option>
+                    <option value="electricite">Électricité</option>
+                </select>
+                <br>
+                <div id="conseils"></div>
+            </form>
+        </div>
+        <script src="{% static 'js/script.js'%}"></script>
+        <script src="{% static 'js/suggestion.js'%}"></script>
     </div>
 </body>
+
 </html>
