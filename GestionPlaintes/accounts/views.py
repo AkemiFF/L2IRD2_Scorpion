@@ -12,6 +12,10 @@ def adminlogin(request):
         return render(request, 'index.html', {'title': "Scorption"})
 
 
+def password_lost(request):
+    context = {}
+    return render(request, "PasswordLost.html", context)
+
 
 def index(request):
     if request.user.is_authenticated:
