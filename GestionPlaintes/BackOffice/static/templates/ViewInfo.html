@@ -94,7 +94,12 @@
                             </form>
                             <form action="{% url 'cloturer' problem.id %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit">Cloturer</button>
+                                {% if problem.etat == "En cours" %}
+                                    <button type="submit">Cloturer</button>
+                                {% endif %}
+                                {% if problem.etat == "Terminé" %}
+                                    <a href="{% url 'delete_problem' problem.id  %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                {% endif %}
                             </form>
                         </td>
                     </tr>
