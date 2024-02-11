@@ -1,18 +1,71 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% include "head.html" %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/backoffice.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
+
+    <style>
+        .retour {
+            background-color: red;
+            width: 50px;
+            height: 20px;
+        }
+
+        .eisenhower-matrix {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .quadrant {
+            flex: 1;
+        }
+
+        .quadrant table {
+            width: 100%;
+        }
+
+        .quadrant table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .quadrant.urgent-important {
+            background-color: #ff8c00;
+        }
+
+        .quadrant.important-not-urgent {
+            background-color: #6c757d;
+        }
+
+        .photo-container {
+            text-align: center;
+        }
+
+        .photo-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container">
             <table id="ticket-table">
                 <tbody>
                     <tr>
+                        <td>
+                            <a href="{% url 'backoffice' %}">
+                                <button id="prev-btn" class="prev retour" onclick="prevPage()">
+                                    <i class="fa fa-arrow-left"></i>
+                                </button>
+                            </a>
+                        </td>
                         <td>{{ problem.id }}</td>
                         <td>{{ problem.subject }}</td>
                         <td>{{ problem.etat }}</td>
@@ -23,7 +76,35 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="{% url 'backoffice' %}"> <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button></a>
+
+            <div class="eisenhower-matrix">
+                <div class="quadrant urgent-important">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><strong>Nom:</strong> {{ problem.nom }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong> {{ problem.email }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sujet:</strong> {{ problem.subject }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Description:</strong> {{ problem.description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quadrant important-not-urgent">
+                    <div class="photo-container">
+                        <img src="{{ problem.image }}" alt="Photo">
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </div>
 </body>
