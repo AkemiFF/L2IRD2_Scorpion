@@ -6,4 +6,5 @@ urlpatterns = [
     path('info/<int:problem_id>/', views.ViewInfo, name="viewinfo"),
     path('feedback/<int:problem_id>/', views.feedback, name='feedback'),
     path('cloturer/<int:problem_id>/', views.cloturer, name='cloturer'),
+    path('delete_problem/<int:problem_id>/', views.delete_problem, name='delete_problem'),
 ]
