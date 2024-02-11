@@ -1,0 +1,114 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+<style>
+    body {
+        background: url("{% static 'img/index.png'%}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+    }
+</style>
+
+
+<body>
+    <div class="wrapper">
+
+        {% include 'nav.html' %}
+
+        <!--------------------------------From box----------------------------------->
+        <div class="form-box">
+
+
+            <!----------------------Registration form----------------------------------------->
+            <div class="login-container" id="login">
+                <form id="loginForm" action="#" method="post">
+                    {% csrf_token %}
+                    <div class="top">
+                        <span>Vous n'avez pas de compte ? <a onclick="register()">S'inscrirez-vous</a></span>
+                        <!-- <header>Se connecter</header> -->
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" id="email" name="email"
+                            placeholder="Nom d'utilisateur ou email" required>
+                        <small id="error-name" class="form-text text-danger"></small>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" id="password" name="password"
+                            placeholder="Mot de passe" required>
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="submit" id="connexion" value="Se connecter">
+                    </div>
+
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="login-check">
+                            <label for="login-check"> Souviens-toi de moi</label>
+                        </div>
+                        <div class="two">
+                            <label for="#"><a href="#">Mot de passe oublié</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!----------------------Registration form----------------------------------------->
+            <div class="register-container" id="register">
+                <form id="registerForm" method="post">
+                    {% csrf_token %}
+                    <div class="top">
+                        <span>Deja inscrit ? <a onclick="login()">Connect-toi maintenant</a></span>
+                        <!-- <header>S'inscrire</header> -->
+                    </div>
+
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" id="name" name="name" placeholder="Nom de famille"
+                                required>
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" id="surname" name="surname" placeholder="Prénom(s)"
+                                required>
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" id="email-inscrip" name="email-inscrip"
+                            placeholder="Adresse e-mail" required>
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" id="password-inscrip" name="password-inscrip"
+                            placeholder="Mot de passe" required>
+                        <i class="fa fa-lock"></i>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" class="submit" id="inscription" value="S'inscrire">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="{% static 'js/jquery/jquery.min.js'%}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+<script src="{% static 'js/script.js'%}"></script>
+
+</html>

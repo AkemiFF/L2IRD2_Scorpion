@@ -39,11 +39,14 @@ def probleme(request):
 
 
 def messagerie(request):
-    titre = "Gestion Plaintes"
-    user = request.user
-    messages = Message.objects.filter(user=user)
-    context = {"Title": titre, "messages": messages}
-    return render(request, 'messagerie.html', context)
+    if request.user.is_authenticated:
+        titre = "Gestion Plaintes"
+        user = request.user
+        messages = Message.objects.filter(user=user)
+        context = {"Title": titre, "messages": messages}
+        return render(request, 'messagerie.html', context)
+    else:
+        return redirect("page_1")
 
 
 def contact(request):
