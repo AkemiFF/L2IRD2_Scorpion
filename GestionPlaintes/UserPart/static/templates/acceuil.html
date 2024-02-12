@@ -65,16 +65,19 @@
             <div class="header__content">
                 <span class="bg__blur"></span>
                 <span class="bg__blur header__blur"></span>
-                <h4>GESTION DE PLAINTE</h4>
-                <h1 class="text1"><span class="p">P</span>ASSION <span class="a">A</span>MOUR <span
-                        class="i">I</span>NTELIGENCE</h1>
+                <h4><span class="p">G</span>ESTION <span class="a">D</span>E <span class="i">P</span>LAINTE</h4>
+                <!-- <h1 class="text1"><span class="p">P</span>ASSION <span class="a">A</span>MOUR <span
+                        class="i">I</span>NTELIGENCE</h1> -->
 
                 <p>
-                    {{ message_acceuil }}
+                    Bienvenue aux nouveaux adhérents <br> Nous sommes ici pour vous offrir des conseils sur toutes
+                    sortes de problèmes.
+
+
                 </p>
 
                 <div class="nav-button">
-                    <a href="{% url 'probleme' %}"><button class="btn white-btn">problème</button></a>
+                    <a href="{% url 'probleme' %}"><button class="btn white-btn">Problème</button></a>
                     <a href="{% url 'suggestion' %}"><button class="btn white-btn">Suggestion</button></a>
 
                 </div>

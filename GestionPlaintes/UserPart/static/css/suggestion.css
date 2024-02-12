@@ -1,8 +1,10 @@
 /* CODE CSS SUR SUGGESTION */
 h1 {
-    font-size: 40px;
+    align-items: justify;
+    width: 20%;
+    font-size: 30px;
     color: orange;
-    margin-bottom: 30px;
+    margin: 30px;
     text-align: center;
 }
 

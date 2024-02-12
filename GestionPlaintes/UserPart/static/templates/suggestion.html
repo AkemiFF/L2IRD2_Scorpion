@@ -71,6 +71,11 @@
 <body>
     <div class="wrapper">
         {% include 'nav.html' %}
+        <h1>Bienvenue, <br> Nous sommes ici pour vous offrir des conseils sur toutes sortes de problèmes. <br><br> Nous vous
+            encourageons à nous
+            faire confiance et à évaluer les implications de chaque option disponible. Optez pour celle qui vous
+            rapproche le plus
+            de la résolution.</h1>
         <div class="container">
             <div class="btn-container">
                 {% for suggestion in suggestions %}
@@ -78,7 +83,7 @@
                     data-suggestion-text="{{ suggestion.text }}">{{suggestion.subject }}</button>
                 {% endfor %}
             </div>
-            <textarea name="textfield" id="description" cols="50" rows="15"></textarea>
+            <textarea disabled name="textfield" id="description" cols="50" rows="15"></textarea>
         </div>
 
         <script src="{% static 'js/suggestion.js'%}"></script>

@@ -61,7 +61,8 @@
                                 <button type="submit" disabled>Cloturer</button>
                                 {% endif %}
                                 {% if problem.etat == "Terminé" %}
-                                <a href="{% url 'delete_problem' problem.id  %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                <a href="{% url 'delete_problem' problem.id  %}"><i class="fa fa-trash"
+                                        aria-hidden="true"></i></a>
                                 {% endif %}
                             </form>
                         </td>
@@ -72,7 +73,6 @@
 
             <button id="prev-btn" class="prev" onclick="prevPage()">Précédent</button>
             <button id="next-btn" class="next" onclick="nextPage()">Suivant</button>
-
 
             <div class="eisenhower-matrix">
                 <div class="quadrant urgent-important">
@@ -95,24 +95,6 @@
                     </table>
                 </div>
                 <div class="quadrant not-urgent-not-important">
-                    <h2>Pas Urgent et Pas Important</h2>
-                    <table id="ticket-table-not-urgent-not-important">
-                        <tbody>
-                            {% for problem in problems %}
-                            {% if problem.importance <= 2 %} <tr>
-                                <td>{{ problem.id }}</td>
-                                <td>{{ problem.subject }}</td>
-                                <td>{{ problem.etat }}</td>
-                                <td class="btn-click">
-                                    <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
-                                </td>
-                                </tr>
-                                {% endif %}
-                                {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="quadrant important-not-urgent">
                     <h2>Important mais Pas Urgent</h2>
                     <table id="ticket-table-important-not-urgent">
                         <tbody>
@@ -148,7 +130,28 @@
                         </tbody>
                     </table>
                 </div>
-              
+                <div class="quadrant important-not-urgent">
+
+                    <h2>Pas Urgent et Pas Important</h2>
+                    <table id="ticket-table-not-urgent-not-important">
+                        <tbody>
+                            {% for problem in problems %}
+                            {% if problem.importance <= 2 %} <tr>
+                                <td>{{ problem.id }}</td>
+                                <td>{{ problem.subject }}</td>
+                                <td>{{ problem.etat }}</td>
+                                <td class="btn-click">
+                                    <a href="{% url 'viewinfo' problem.id %}"><button>Voir</button></a>
+                                </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+
             </div>
         </div>
 
